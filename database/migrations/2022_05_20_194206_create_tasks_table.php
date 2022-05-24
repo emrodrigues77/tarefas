@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->string('description');
-            $table->boolean('finished');
+            $table->boolean('finished')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
