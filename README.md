@@ -1,64 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Lista de Tarefas
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Aplicativo
 
-## About Laravel
+O aplicativo foi desenvolvido com o framework Laravel 9 e PHP 8.1, utilizando de recursos UI do Bootstrap e persistindo os dados num banco de dados MySQL 8.0.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O processo de cadastramento e autenticação de usuários é feito pelo Auth Scaffolding do Boostrap e tokens JWT.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+A versão online do aplicativo está disponível em http://www.eduardo.rodrigues.nom.br/tarefas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## API
 
-## Learning Laravel
+Todos os endpoints, com exceção da rota de login e de registro de novo usuário estão protegidos pelo sistema de autenticação JWT.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Uma vez que para testá-los com Postman é necessário efetuar o login para obter um token válido, eu desabilitei a função de checagem do token.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Endpoints da API
 
-## Laravel Sponsors
+**POST /api/v1/login** Efetua o login do usuário
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**POST /api/v1/register** Registra um novo usuário
 
-### Premium Partners
+**POST /api/v1/logout** Efetua logoff do usuário
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**GET /api/v1/{user}/tasks/all** Lista todas as tarefas do usuário
 
-## Contributing
+**GET /api/v1/{user}/tasks/finished** Lista todas as tarefas concluídas do usuário
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**GET /api/v1/{user}/tasks/unfinished** Lista todas as tarefas não concluídas do usuário
 
-## Code of Conduct
+**GET /api/v1/{user}/tasks/stats** Lista todas as estatísticas de tarefas do usuário
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**POST /api/v1/{user}/tasks/store** Salva uma nova tarefa no sistema
 
-## Security Vulnerabilities
+**PATCH /api/v1/{user}/tasks/{task}/update** Atualiza uma tarefa
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**PATCH /api/v1/{user}/tasks/{task}/status/{status}** Muda o status de uma tarefa
 
-## License
+**DELETE /api/v1/{user}/tasks/{task}/destroy** Apaga uma tarefa
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**GET /api/v1/{user}/tasks/all/count** Lista o número total de tarefas do usuário
+
+**GET /api/v1/{user}/tasks/finished/count** Lista o número de tarefas concluídas do usuário
+
+**GET /api/v1/{user}/tasks/unfinished/count** Lista o número de tarefas não concluídas do usuário
