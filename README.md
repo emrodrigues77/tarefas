@@ -2,17 +2,17 @@
 
 ## Aplicativo
 
-O aplicativo foi desenvolvido com o framework Laravel 9 e PHP 8.1, utilizando de recursos UI do Bootstrap e persistindo os dados num banco de dados MySQL 8.0.
+O aplicativo foi desenvolvido com o framework Laravel 9 e PHP 8.1, utilizando de recursos de frontend UI do Bootstrap e persistindo os dados num banco de dados MySQL 8.0.
 
 O processo de cadastramento e autenticação de usuários é feito pelo Auth Scaffolding do Boostrap e tokens JWT.
 
-A versão online do aplicativo está disponível em http://www.eduardo.rodrigues.nom.br/tarefas
+Antes de executar as migrações, executar o arquivo sql.sql, encontrado na pasta /res. Nele estão os comandos para criação do banco de dados e o usuário com permissões de acesso.
+
+Uma vez executadas as migrações, é só iniciar o servidor. :smile:
 
 ## API
 
-Todos os endpoints, com exceção da rota de login e de registro de novo usuário estão protegidos pelo sistema de autenticação JWT.
-
-Uma vez que para testá-los com Postman é necessário efetuar o login para obter um token válido, eu desabilitei a função de checagem do token.
+Todos os endpoints, com exceção da rota de login e de registro de novo usuário estão protegidos pelo sistema de autenticação JWT, o que exige a execução do endpoint de login para geração do token de autorização para acessar os demais pontos.
 
 ### Endpoints da API
 
